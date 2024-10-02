@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.employeemanagement.controller;
 
 import java.util.List;
 
@@ -10,13 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.model.Employee;
-import com.example.demo.service.EmployeeService;
-
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import com.example.employeemanagement.model.Employee;
+import com.example.employeemanagement.service.EmployeeService;
 
 @RestController
 @RequestMapping("/api/v1/employees")
@@ -58,7 +57,7 @@ public class EmployeeController {
         employee.setFirstName(employeeData.getFirstName());
         employee.setLastName(employeeData.getLastName());
         employee.setEmail(employeeData.getEmail());
-        Employee updatedEmployee = employeeService.updateEmployee(employee);
+        Employee updatedEmployee = employeeService.updateEmployee(id, employee);
         return ResponseEntity.ok(updatedEmployee);
     }
 
